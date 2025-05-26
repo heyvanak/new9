@@ -8,7 +8,7 @@ from handlers.ads import ads_handler
 from config import BOT_TOKEN
 
 # آدرس دامنه اپلیکیشن در Render (مثلاً: https://heyvanakbot.onrender.com)
-APP_URL = os.environ.get("APP_URL", "https://your-app-name.onrender.com") + f"/{BOT_TOKEN}"
+APP_URL = os.environ.get("APP_URL", "https://new9-23.onrender.com") + f"/{BOT_TOKEN}"
 
 async def main():
     app = ApplicationBuilder().token(BOT_TOKEN).build()
