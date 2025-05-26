@@ -1,11 +1,13 @@
 import os
+import asyncio
+import nest_asyncio
 from telegram.ext import ApplicationBuilder
 from handlers.start import start_handler
 from handlers.menu import menu_handler
 from handlers.ads import ads_handler
 from config import BOT_TOKEN
 
-# آدرس دامنه اپلیکیشن در Render (با HTTPS)
+# آدرس دامنه اپلیکیشن در Render (مثلاً: https://heyvanakbot.onrender.com)
 APP_URL = os.environ.get("APP_URL", "https://your-app-name.onrender.com") + f"/{BOT_TOKEN}"
 
 async def main():
@@ -16,8 +18,10 @@ async def main():
     app.add_handler(menu_handler)
     app.add_handler(ads_handler)
 
-    # ست کردن webhook و اجرای وب‌سرور
+    # ست کردن Webhook
     await app.bot.set_webhook(APP_URL)
+
+    # اجرای وب‌سرور
     await app.run_webhook(
         listen="0.0.0.0",
         port=int(os.environ.get("PORT", 443)),
@@ -25,9 +29,5 @@ async def main():
     )
 
 if __name__ == "__main__":
-import asyncio
-
-if __name__ == "__main__":
-    import nest_asyncio
     nest_asyncio.apply()
     asyncio.get_event_loop().run_until_complete(main())
