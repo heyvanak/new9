@@ -1,3 +1,4 @@
+from telegram import Update
 async def handle_ads_category(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = update.message.text
 
