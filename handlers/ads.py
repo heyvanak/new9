@@ -25,11 +25,12 @@ async def handle_ads_category(update: Update, context: ContextTypes.DEFAULT_TYPE
         for entry in feed.entries[:10]:
             title = entry.title
             link = entry.link
-            ads += f"{title}\n{link}\n\n"
+            # ساخت هایپرلینک در قالب HTML
+            ads += f"<b>{title}</b>\nبرای مشاهده آگهی روی این متن <a href='{link}'>اینجا کلیک کنید</a>\n\n"
 
         # ارسال آگهی‌ها به کاربر
         if ads:
-            await update.message.reply_text(f"لیست آگهی‌های {text}:\n{ads}", reply_markup=ads_category_keyboard())
+            await update.message.reply_text(f"لیست آگهی‌های {text}:\n{ads}", reply_markup=ads_category_keyboard(), parse_mode='HTML')
         else:
             await update.message.reply_text(f"هیچ آگهی جدیدی برای {text} وجود ندارد.", reply_markup=ads_category_keyboard())
     elif text == "🔙 بازگشت":
