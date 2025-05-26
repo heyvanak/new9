@@ -13,3 +13,7 @@ async def handle_ads_category(update: Update, context: ContextTypes.DEFAULT_TYPE
         await update.message.reply_text("لیست آگهی‌های آبزیان:\nhttps://heyvanak.com/ads/adopt-fish/feed", reply_markup=ads_category_keyboard())
     elif text == "🔙 بازگشت":
         await update.message.reply_text("بازگشت به منوی اصلی:", reply_markup=main_menu_keyboard())
+
+from telegram.ext import MessageHandler, filters
+
+ads_handler = MessageHandler(filters.TEXT & ~filters.COMMAND, handle_ads_category)
