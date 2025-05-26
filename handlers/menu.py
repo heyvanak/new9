@@ -1,7 +1,7 @@
-from telegram.ext import MessageHandler, filters
 from telegram import Update
+from telegram.ext import ContextTypes, MessageHandler, filters
 from utils.keyboards import main_menu_keyboard, ads_category_keyboard, social_media_keyboard
-from telegram.ext import ContextTypes
+
 async def handle_menu_selection(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = update.message.text
 
