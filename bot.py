@@ -22,7 +22,7 @@ async def main():
     await app.bot.set_webhook(APP_URL)
 
     # اجرای وب‌سرور
-    await app.start_webhook(
+    await app.run_webhook(
         listen="0.0.0.0",
         port=int(os.environ.get("PORT", 443)),
         webhook_url=APP_URL
